@@ -62,7 +62,7 @@ export function SignIn() {
       console.error("Error accessing camera:", error);
     }
   };
-
+  
 
   const takePhoto = () => {
     const video = document.getElementById("camera-preview");
@@ -100,14 +100,13 @@ export function SignIn() {
     }
   }, [cameraActive, stream]);
 
-  const handleRetakeSelfie = () => {
-    /*     setCapturedPhoto(null);
-        setPhotoTaken(false);
-        setPreviewSrc(null);
-        setShowModal(false);
-        setCameraActive(true); // Cambio a true para activar la cámara nuevamente
-     */
-    openCamera()
+  const handleRetakeSelfie = async () => {
+     setCapturedPhoto(null);
+     setPhotoTaken(false);
+     setPreviewSrc(null);
+     setShowModal(false);
+     setCameraPermissionGranted(false);
+     setCameraActive(true); // Cambio a true para activar la cámara nuevamente
   };
 
   const handleInputChange = (event) => {
@@ -149,7 +148,7 @@ export function SignIn() {
       });
 
       if (response.ok) {
-
+        
         console.log("User registered successfully.");
 
         const responseData = await response.json();
@@ -213,7 +212,7 @@ export function SignIn() {
           text: "Invalid credentials",
         });
       }
-
+      
     } catch (error) {
       console.error("Error login user:", error);
     }
@@ -246,7 +245,7 @@ export function SignIn() {
                   onChange={handleInputChange}
                   required
                 />
-                {errors.firstName && <div className="error-api">{errors.firstName[0]}</div>}
+                {errors.firstName && <div className="error-api">{errors.firstName[0]}</div>} 
                 <input
                   type="text"
                   name="lastName"
