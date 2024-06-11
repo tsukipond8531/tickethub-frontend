@@ -111,6 +111,7 @@ export function SidebarUser({ onToggle, isOpen }) {
           </MenuItem>
           <MenuItem
             active={activeItem === "signout"}
+            onClick={() => handleItemClick("signout", "/sign-in")}
           >
             Sign Out
           </MenuItem>
